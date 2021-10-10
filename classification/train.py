@@ -89,8 +89,8 @@ if __name__ == '__main__':
                       'Acc : {:.4f}'.format(train_acc / ((i+1)*config.TRAIN.BATCH_SIZE_PER_GPU)))
 
         print('EPOCHS : {}/{}'.format(epoch + 1, config.TRAIN.END_EPOCH),
-              'Loss : {:.4f}'.format(train_loss / len(train_dataset)),
-              'Acc : {:.4f}'.format(train_acc / (len(train_dataset)*config.TRAIN.BATCH_SIZE_PER_GPU)))
+              'Loss : {:.4f}'.format(train_loss * config.TRAIN.BATCH_SIZE_PER_GPU / len(train_dataset)),
+              'Acc : {:.4f}'.format(train_acc / len(train_dataset)))
         utils.accuracy_test(model,test_loader)
         torch.save(model, os.path.join(config.OUTPUT_DIR, "checkpoint_{}_acc_{:.4f}.pth".format(epoch, train_loss / len(train_dataset))))
 
