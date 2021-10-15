@@ -23,3 +23,4 @@ node_modules/
 
 classification/datasets/test/*
 classification/datasets/train/*
+classification/__pycache__/*
